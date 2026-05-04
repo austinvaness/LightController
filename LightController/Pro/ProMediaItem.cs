@@ -110,13 +110,11 @@ public class ProMediaItem
     {
         Directory.CreateDirectory(cacheFolder);
         string cacheFile = Path.Combine(cacheFolder, Path.GetFileName(file) + ".bin");
-#if !DEBUG
         if(File.Exists(cacheFile))
         {
             progress.Report(double.NaN);
             return LoadItemAsync(cacheFile, cancelToken);
         }
-#endif
         return CreateItemAsync(file, cacheFile, motion, mediaProcessors, progress, cancelToken);
     }
 
