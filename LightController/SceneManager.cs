@@ -64,7 +64,7 @@ public class SceneManager
             while (!midiDevices.TryGetInput(midiDevice, out this.midiDevice))
             {
                 midiDevices.LogMidiDeviceList();
-                ErrorBox.ExitOnCancel("No Midi device found with name '" + midiDevice + "', please check your config. Press OK to try again or Cancel to exit.");
+                ErrorBox.AskRetryFatal("No Midi device found with name '" + midiDevice + "', please check your config. Press Retry to try again or Cancel to exit.");
             }
         }
 

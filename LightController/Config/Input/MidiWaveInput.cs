@@ -60,7 +60,7 @@ internal class MidiWaveInput : InputBase
         if(!midiDevices.TryGetInput(MidiDevice, out midi))
         {
             Log.Error($"Unable to find midi device for midi wave input!");
-            while(ErrorBox.Ask($"Required MIDI Device '{MidiDevice}' not found. Press OK to retry."))
+            while(ErrorBox.AskRetry($"Required MIDI Device '{MidiDevice}' not found."))
             {
                 if (midiDevices.TryGetInput(MidiDevice, out midi))
                     break;

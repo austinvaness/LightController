@@ -18,19 +18,19 @@ public static class ErrorBox
     /// <summary>
     /// Closes the application if the user presses cancel
     /// </summary>
-    public static void ExitOnCancel(string msg)
+    public static void AskRetryFatal(string msg)
     {
-        var result = MessageBox.Show(msg, "Light Controller", MessageBoxButton.OKCancel, MessageBoxImage.Error, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
-        if(result != MessageBoxResult.OK)
+        var result = MessageBox.Show(msg, "Light Controller", MessageBoxButton.RetryCancel, MessageBoxImage.Error, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
+        if (result != MessageBoxResult.Retry)
         {
             Log.Error("Application closed after user prompt: '" + msg + "'");
             Process.GetCurrentProcess().Kill();
         }
     }
 
-    public static bool Ask(string msg)
+    public static bool AskRetry(string msg)
     {
-        var result = MessageBox.Show(msg, "Light Controller", MessageBoxButton.OKCancel, MessageBoxImage.Error, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
-        return result == MessageBoxResult.OK;
+        var result = MessageBox.Show(msg, "Light Controller", MessageBoxButton.RetryCancel, MessageBoxImage.Error, MessageBoxResult.None, MessageBoxOptions.DefaultDesktopOnly);
+        return result == MessageBoxResult.Retry;
     }
 }
